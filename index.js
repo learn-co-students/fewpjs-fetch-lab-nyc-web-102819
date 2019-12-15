@@ -1,5 +1,28 @@
 function fetchBooks() {
 
+  return fetch("https://anapioficeandfire.com/api/books")
+  .then(resp => resp.json())
+  .then(json => {
+    renderBooks(json); 
+    
+    console.log(json[4])
+    console.log(json[4].name)
+    console.log(json[4].characters[1030])
+    console.log(json[4].numberOfPages)
+
+    let allPages = 0
+
+    let allBooks = json.forEach (function count(e) {
+      allPages += e.numberOfPages 
+      console.log (e.numberOfPages)
+    })
+    console.log(allPages)
+
+    // tried with reduce but cannot log total 
+    // let allBooks = json.reduce((acc, each) => {acc += each.numberOfPages; console.log(each.numberOfPages)})
+    // console.log(allBooks)
+  })
+
 }
 
 function renderBooks(json) {
